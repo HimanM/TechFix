@@ -25,17 +25,17 @@ namespace Client.InventoryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditInventoryQuantity", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string EditInventoryQuantity(int productId, int newQuantity);
+        string EditInventoryQuantity(int Id, int newQuantity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditInventoryQuantity", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> EditInventoryQuantityAsync(int productId, int newQuantity);
+        System.Threading.Tasks.Task<string> EditInventoryQuantityAsync(int Id, int newQuantity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RemoveFromInventory", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string RemoveFromInventory(int productId, int quantityToRemove);
+        string RemoveFromInventory(int Id, int quantityToRemove);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RemoveFromInventory", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> RemoveFromInventoryAsync(int productId, int quantityToRemove);
+        System.Threading.Tasks.Task<string> RemoveFromInventoryAsync(int Id, int quantityToRemove);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddProductToInventory", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -101,20 +101,20 @@ namespace Client.InventoryService {
             return base.Channel.HelloWorldAsync();
         }
         
-        public string EditInventoryQuantity(int productId, int newQuantity) {
-            return base.Channel.EditInventoryQuantity(productId, newQuantity);
+        public string EditInventoryQuantity(int Id, int newQuantity) {
+            return base.Channel.EditInventoryQuantity(Id, newQuantity);
         }
         
-        public System.Threading.Tasks.Task<string> EditInventoryQuantityAsync(int productId, int newQuantity) {
-            return base.Channel.EditInventoryQuantityAsync(productId, newQuantity);
+        public System.Threading.Tasks.Task<string> EditInventoryQuantityAsync(int Id, int newQuantity) {
+            return base.Channel.EditInventoryQuantityAsync(Id, newQuantity);
         }
         
-        public string RemoveFromInventory(int productId, int quantityToRemove) {
-            return base.Channel.RemoveFromInventory(productId, quantityToRemove);
+        public string RemoveFromInventory(int Id, int quantityToRemove) {
+            return base.Channel.RemoveFromInventory(Id, quantityToRemove);
         }
         
-        public System.Threading.Tasks.Task<string> RemoveFromInventoryAsync(int productId, int quantityToRemove) {
-            return base.Channel.RemoveFromInventoryAsync(productId, quantityToRemove);
+        public System.Threading.Tasks.Task<string> RemoveFromInventoryAsync(int Id, int quantityToRemove) {
+            return base.Channel.RemoveFromInventoryAsync(Id, quantityToRemove);
         }
         
         public string AddProductToInventory(int productId, int supplierId, int quantityAvailable) {

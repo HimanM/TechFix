@@ -27,18 +27,18 @@ namespace Service
 
 
         [WebMethod]
-        public string EditInventoryQuantity(int productId, int newQuantity)
+        public string EditInventoryQuantity(int Id, int newQuantity)
         {
             try
             {
                 using (SqlConnection conn = Database.GetConnection())
                 {
                     conn.Open();
-                    string query = "UPDATE Inventory SET quantity_available = @quantity, last_updated = GETDATE() WHERE product_id = @productId";
+                    string query = "UPDATE Inventory SET quantity_available = @quantity, last_updated = GETDATE() WHERE id = @Id";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@quantity", newQuantity);
-                        cmd.Parameters.AddWithValue("@productId", productId);
+                        cmd.Parameters.AddWithValue("@Id", Id);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -52,18 +52,18 @@ namespace Service
 
         // Function 2: Remove specific quantity from inventory
         [WebMethod]
-        public string RemoveFromInventory(int productId, int quantityToRemove)
+        public string RemoveFromInventory(int Id, int quantityToRemove)
         {
             try
             {
                 using (SqlConnection conn = Database.GetConnection())
                 {
                     conn.Open();
-                    string query = "UPDATE Inventory SET quantity_available = quantity_available - @quantityToRemove, last_updated = GETDATE() WHERE product_id = @productId";
+                    string query = "UPDATE Inventory SET quantity_available = quantity_available - @quantityToRemove, last_updated = GETDATE() WHERE id = @Id";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@quantityToRemove", quantityToRemove);
-                        cmd.Parameters.AddWithValue("@productId", productId);
+                        cmd.Parameters.AddWithValue("@Id", Id);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -84,7 +84,22 @@ namespace Service
                 using (SqlConnection conn = Database.GetConnection())
                 {
                     conn.Open();
-                    string query = "INSERT INTO Inventory (product_id, supplier_id, quantity_available, last_updated) VALUES (@productId, @supplierId, @quantityAvailable, GETDATE())";
+                    // Check if the record already exists in the Inventory table
+                    string query = @"
+                        IF EXISTS (SELECT 1 FROM Inventory WHERE product_id = @productId AND supplier_id = @supplierId)
+                        BEGIN
+                            -- Update existing record
+                            UPDATE Inventory 
+                            SET quantity_available = @quantityAvailable, last_updated = GETDATE() 
+                            WHERE product_id = @productId AND supplier_id = @supplierId
+                        END
+                        ELSE
+                        BEGIN
+                            -- Insert new record
+                            INSERT INTO Inventory (product_id, supplier_id, quantity_available, last_updated) 
+                            VALUES (@productId, @supplierId, @quantityAvailable, GETDATE())
+                        END";
+
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@productId", productId);
@@ -172,13 +187,17 @@ namespace Service
                 {
                     conn.Open();
                     string query = @"
-                SELECT 
-                    i.product_id,
-                    p.name AS ProductName
-                FROM 
-                    Inventory i
-                INNER JOIN 
-                    Products p ON i.product_id = p.id";
+                    SELECT 
+                        i.id,
+                        i.product_id,
+                        p.name AS ProductName,
+                        (p.name + ' By ' + s.name) AS DetailProduct
+                    FROM 
+                        Inventory i
+                    INNER JOIN 
+                        Products p ON i.product_id = p.id
+                    INNER JOIN 
+                        Suppliers s ON i.supplier_id = s.id";
                     using (SqlDataAdapter da = new SqlDataAdapter(query, conn))
                     {
                         da.Fill(ds);

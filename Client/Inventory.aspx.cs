@@ -58,13 +58,13 @@ namespace Client
                 ddlProducts.DataBind();
 
                 ddlEditProducts.DataSource = productsInv;
-                ddlEditProducts.DataTextField = "ProductName";
-                ddlEditProducts.DataValueField = "product_id";
+                ddlEditProducts.DataTextField = "DetailProduct";
+                ddlEditProducts.DataValueField = "id";
                 ddlEditProducts.DataBind();
 
                 ddlRemoveProducts.DataSource = productsInv;
-                ddlRemoveProducts.DataTextField = "ProductName";
-                ddlRemoveProducts.DataValueField = "product_id";
+                ddlRemoveProducts.DataTextField = "DetailProduct";
+                ddlRemoveProducts.DataValueField = "id";
                 ddlRemoveProducts.DataBind();
 
                 ddlViewProducts.DataSource = productsInv;
@@ -102,20 +102,20 @@ namespace Client
 
         protected void btnEditInventory_Click(object sender, EventArgs e)
         {
-            int productId = Convert.ToInt32(ddlEditProducts.SelectedValue);
+            int Id = Convert.ToInt32(ddlEditProducts.SelectedValue);
             int newQuantity = Convert.ToInt32(txtNewQuantity.Text);
 
-            string result = inventoryService.EditInventoryQuantity(productId, newQuantity);
+            string result = inventoryService.EditInventoryQuantity(Id, newQuantity);
             Response.Write(result);
             LoadInventory();
         }
 
         protected void btnRemoveQuantity_Click(object sender, EventArgs e)
         {
-            int productId = Convert.ToInt32(ddlRemoveProducts.SelectedValue);
+            int Id = Convert.ToInt32(ddlRemoveProducts.SelectedValue);
             int quantityToRemove = Convert.ToInt32(txtQuantityToRemove.Text);
 
-            string result = inventoryService.RemoveFromInventory(productId, quantityToRemove);
+            string result = inventoryService.RemoveFromInventory(Id, quantityToRemove);
             Response.Write(result);
             LoadInventory();
         }
