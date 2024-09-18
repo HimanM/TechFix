@@ -38,6 +38,10 @@ namespace Client
         {
             if (!IsPostBack)
             {
+                if (Session["Username"] == null)
+                {
+                    Response.Redirect("Login.aspx"); // Redirect to login page if not logged in
+                }
                 LoadSuppliers();
                 LoadOrders();
                 

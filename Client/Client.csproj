@@ -70,6 +70,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\InventoryService\InventoryService.wsdl" />
+    <Content Include="Connected Services\LoginService\Client.LoginService.HelloWorldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LoginService\Client.LoginService.ValidateUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\LoginService\LoginService.wsdl" />
     <None Include="Connected Services\OrderService\OrderService.wsdl" />
     <None Include="Connected Services\ProductService\configuration91.svcinfo" />
     <None Include="Connected Services\ProductService\configuration.svcinfo" />
@@ -92,6 +99,12 @@
     <None Include="Connected Services\InventoryService\configuration91.svcinfo" />
     <None Include="Connected Services\InventoryService\configuration.svcinfo" />
     <None Include="Connected Services\InventoryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\LoginService\configuration91.svcinfo" />
+    <None Include="Connected Services\LoginService\configuration.svcinfo" />
+    <None Include="Connected Services\LoginService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -122,6 +135,8 @@
     </None>
     <Content Include="Home.aspx" />
     <Content Include="Inventory.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Navbar.ascx" />
     <Content Include="Order.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="Quotation.aspx" />
@@ -130,6 +145,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\InventoryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\LoginService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -167,6 +187,20 @@
     </Compile>
     <Compile Include="Inventory.aspx.designer.cs">
       <DependentUpon>Inventory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Navbar.ascx.cs">
+      <DependentUpon>Navbar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Navbar.ascx.designer.cs">
+      <DependentUpon>Navbar.ascx</DependentUpon>
     </Compile>
     <Compile Include="Order.aspx.cs">
       <DependentUpon>Order.aspx</DependentUpon>
@@ -215,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\InventoryService\" />
+    <WCFMetadataStorage Include="Connected Services\LoginService\" />
     <WCFMetadataStorage Include="Connected Services\OrderService\" />
     <WCFMetadataStorage Include="Connected Services\ProductService\" />
     <WCFMetadataStorage Include="Connected Services\QuotationService\" />

@@ -76,6 +76,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="InventoryService.asmx" />
+    <Content Include="LoginService.asmx" />
     <Content Include="OrderService.asmx" />
     <Content Include="ProductService.asmx" />
     <Content Include="QuotationService.asmx" />
@@ -91,6 +92,10 @@
     <Compile Include="Database.cs" />
     <Compile Include="InventoryService.asmx.cs">
       <DependentUpon>InventoryService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LoginService.asmx.cs">
+      <DependentUpon>LoginService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="OrderService.asmx.cs">

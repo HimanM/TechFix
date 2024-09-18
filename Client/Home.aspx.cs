@@ -11,7 +11,10 @@ namespace Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx"); // Redirect to login page if not logged in
+            }
         }
     }
 }

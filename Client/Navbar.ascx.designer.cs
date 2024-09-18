@@ -11,97 +11,79 @@ namespace Client
 {
 
 
-    public partial class Order
+    public partial class Navbar
     {
 
         /// <summary>
-        /// form1 control.
+        /// lnkHome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.HyperLink lnkHome;
 
         /// <summary>
-        /// Navbar1 control.
+        /// lnkProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Client.Navbar Navbar1;
+        protected global::System.Web.UI.WebControls.HyperLink lnkProducts;
 
         /// <summary>
-        /// lblMessage control.
+        /// lnkSuppliers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.HyperLink lnkSuppliers;
 
         /// <summary>
-        /// ddlSuppliers control.
+        /// lnkInventory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSuppliers;
+        protected global::System.Web.UI.WebControls.HyperLink lnkInventory;
 
         /// <summary>
-        /// gvProducts control.
+        /// lnkOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvProducts;
+        protected global::System.Web.UI.WebControls.HyperLink lnkOrders;
 
         /// <summary>
-        /// gvOrderItems control.
+        /// lnkQuotation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvOrderItems;
+        protected global::System.Web.UI.WebControls.HyperLink lnkQuotation;
 
         /// <summary>
-        /// btnPlaceOrder control.
+        /// litUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPlaceOrder;
+        protected global::System.Web.UI.WebControls.Literal litUsername;
 
         /// <summary>
-        /// gvOrders control.
+        /// btnLogout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvOrders;
-
-        /// <summary>
-        /// pnlOrderItems control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlOrderItems;
-
-        /// <summary>
-        /// gvOrderItemsList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvOrderItemsList;
+        protected global::System.Web.UI.WebControls.Button btnLogout;
     }
 }
