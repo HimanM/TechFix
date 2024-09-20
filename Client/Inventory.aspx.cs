@@ -76,7 +76,7 @@ namespace Client
 
         private void LoadSupplierDropDown()
         {
-            // Assuming you have a SupplierService to fetch the suppliers
+            
             SupplierService.SupplierServiceSoapClient supplierService = new SupplierService.SupplierServiceSoapClient();
             SupplierService.Supplier[] suppliers = supplierService.GetAllSuppliers();  // Get the array of suppliers
 

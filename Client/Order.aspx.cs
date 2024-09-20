@@ -191,7 +191,6 @@ namespace Client
                 // Call AddOrder with collected data
                 orderService.AddOrder(supplierId, totalAmount, temporaryOrderItems.ToArray());
 
-                //inventory update here
 
                 temporaryOrderItems.Clear(); // Clear temporary list
                 BindOrderItemsGrid(); // Clear the grid
