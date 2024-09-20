@@ -24,7 +24,6 @@ namespace Client
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // You can replace this logic with actual database authentication
             if (AuthenticateUser(username, password))
             {
                 // Store username in session
@@ -40,7 +39,6 @@ namespace Client
         // Authentication method (replace with database logic)
         private bool AuthenticateUser(string username, string password)
         {
-            // Example: Assume correct credentials are "admin" and "password"
             return (loginService.ValidateUser(username, password));
         }
     }
