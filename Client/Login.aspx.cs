@@ -36,7 +36,7 @@ namespace Client
             }
         }
 
-        // Authentication method (replace with database logic)
+
         private bool AuthenticateUser(string username, string password)
         {
             return (loginService.ValidateUser(username, password));
